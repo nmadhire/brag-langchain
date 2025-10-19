@@ -1,18 +1,2 @@
-ipykernel
-ragatouille
-python-dotenv
-langchain
-langchain-community
-langchain-core
-langchain-openai
-pinecone-client
-beautifulsoup4
-tiktoken
-numpy
-langchainhub
-chromadb
-youtube-transcript-api
-pytube
-cohere
-pypdf
-yt_dlp
+# This project now uses uv for dependency management.
+# Install dependencies with `uv sync` using the pyproject.toml/uv.lock files.

@@ -1,0 +1,27 @@
+[project]
+name = "brag-langchain"
+version = "0.1.0"
+description = "Retrieval-Augmented Generation notebooks and examples"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "ipykernel",
+    "ragatouille",
+    "python-dotenv",
+    "langchain",
+    "langchain-community",
+    "langchain-core",
+    "langchain-openai",
+    "pinecone-client",
+    "beautifulsoup4",
+    "tiktoken",
+    "numpy",
+    "langchainhub",
+    "chromadb",
+    "youtube-transcript-api",
+    "pytube",
+    "cohere",
+    "pypdf",
+    "yt_dlp",
+]

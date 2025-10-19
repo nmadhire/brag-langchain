@@ -77,7 +77,7 @@ This final notebook brings together the RAG system components, with a focus on s
 
 ### Pre-requisites
 
-Ensure **Python 3.11.11** (preferred) is installed on your system. Follow the platform-specific instructions below to install it if not already installed.
+Ensure **Python 3.11.x** (preferred) is available on your system. Follow the platform-specific instructions below if you still need to install it.
 
 #### macOS
 1. Install [Homebrew](https://brew.sh/) if not already installed:
@@ -114,6 +114,23 @@ Ensure **Python 3.11.11** (preferred) is installed on your system. Follow the pl
    ```cmd
    python --version
    ```
+
+   #### Install uv (All Platforms)
+   This project uses [uv](https://docs.astral.sh/uv/) for dependency and virtual-environment management. Install uv using one of the following methods (pick whichever fits your system best):
+
+   - **Shell installer**
+      ```bash
+      curl -LsSf https://astral.sh/uv/install.sh | sh
+      ```
+   - **Homebrew (macOS/Linux)**
+      ```bash
+      brew install uv
+      ```
+   - **pipx**
+      ```bash
+      pipx install uv
+      ```
+
 ---
 
 ### Installation Instructions
@@ -124,46 +141,32 @@ git clone https://github.com/bRAGAI/bRAG-langchain.git
 cd bRAG-langchain
 ```
 
-#### 2. Create a Virtual Environment
-Use Python 3.11.11 to create a virtual environment:
-```bash
-python3.11 -m venv venv
-```
-
-Activate the virtual environment:
-- **macOS/Linux**:
-  ```bash
-  source venv/bin/activate
-  ```
-- **Windows**:
-  ```cmd
-  venv\Scripts\activate
-  ```
-
-#### 3. Verify and Fix Python Version
-If the virtual environment defaults to a different Python version (e.g., Python 3.13):
-1. Verify the current Python version inside the virtual environment:
+   #### 2. Make Python 3.11 available via uv (optional if already installed)
+   If you don't already have Python 3.11 on your machine, let uv grab it for you:
    ```bash
-   python --version
-   ```
-2. Use Python 3.11 explicitly within the virtual environment:
-   ```bash
-   python3.11
-   ```
-3. Ensure the `python` command uses Python 3.11 by creating a symbolic link:
-   ```bash
-   ln -sf $(which python3.11) $(dirname $(which python))/python
-   ```
-4. Verify the fix:
-   ```bash
-   python --version
+   uv python install 3.11
    ```
 
-#### 4. Install Dependencies
-Install the required packages:
-```bash
-pip install -r requirements.txt
-```
+   #### 3. Sync dependencies with uv
+   Create the virtual environment and install all project dependencies in one step:
+   ```bash
+   uv sync
+   ```
+   This command reads `pyproject.toml` + `uv.lock`, creates `.venv/`, and installs every required package.
+
+   #### 4. Activate the virtual environment (optional)
+   If you prefer activating the environment manually, use:
+
+   - **macOS/Linux**
+      ```bash
+      source .venv/bin/activate
+      ```
+   - **Windows (PowerShell/CMD)**
+      ```powershell
+      .venv\Scripts\activate
+      ```
+
+   You can also skip manual activation and prefix commands with `uv run`, e.g. `uv run python my_script.py`.
 
 ---
 
